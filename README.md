@@ -1,2 +1,3 @@
 # GtExternalFileReference
 Custom Lepiter annotation that enables referencing lines of text/code in files external to the Gt image.
+## Installation```[ EpMonitor current	disableDuring: [ Metacello new			repository: 'github://botwhytho/GtExternalFileReference:main/src';			baseline: 'GtExternalFileReference';			load ] ] forkAt: 29 named: #GtExternalFileReference```## Load Lepiter				After installing with Metacello, you will be able to execute```#BaselineOfGtExternalFileReference asClass loadLepiter```
