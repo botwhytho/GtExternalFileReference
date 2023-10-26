@@ -5,6 +5,6 @@ Class {
 }
 
 { #category : #generated }
-LeExternalFileReferenceParseNode >> acceptVisitor: anExternalFileReferenceParseVisitor [
-	^ anExternalFileReferenceParseVisitor visitExternalFileReferenceParse: self
+LeExternalFileReferenceParseNode >> acceptVisitor: aParseVisitor [
+	^ aParseVisitor visitParse: self
 ]

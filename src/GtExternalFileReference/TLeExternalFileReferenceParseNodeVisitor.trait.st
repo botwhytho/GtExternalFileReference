@@ -7,7 +7,7 @@ Trait {
 
 { #category : #generated }
 TLeExternalFileReferenceParseNodeVisitor >> visitArgument: anArgument [
-	^ self visitExternalFileReferenceParse: anArgument
+	^ self visitParse: anArgument
 ]
 
 { #category : #generated }
@@ -17,17 +17,17 @@ TLeExternalFileReferenceParseNodeVisitor >> visitEndArgument: anEndArgument [
 
 { #category : #generated }
 TLeExternalFileReferenceParseNodeVisitor >> visitExternalFileReferenceAnnotation: anExternalFileReferenceAnnotation [
-	^ self visitExternalFileReferenceParse: anExternalFileReferenceAnnotation
-]
-
-{ #category : #generated }
-TLeExternalFileReferenceParseNodeVisitor >> visitExternalFileReferenceParse: anExternalFileReferenceParse [
-	^ self visitSmaCCParseNode: anExternalFileReferenceParse
+	^ self visitParse: anExternalFileReferenceAnnotation
 ]
 
 { #category : #generated }
 TLeExternalFileReferenceParseNodeVisitor >> visitFileNameArgument: aFileNameArgument [
 	^ self visitArgument: aFileNameArgument
+]
+
+{ #category : #generated }
+TLeExternalFileReferenceParseNodeVisitor >> visitParse: aParse [
+	^ self visitSmaCCParseNode: aParse
 ]
 
 { #category : #generated }

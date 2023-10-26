@@ -6,14 +6,14 @@ Class {
 
 { #category : #'generated-accessing' }
 LeExternalFileReferenceParser class >> cacheId [
-	^'2023-10-25T17:39:12.547871-04:00'
+	^'2023-10-26T01:22:24.248607-04:00'
 ]
 
 { #category : #generated }
 LeExternalFileReferenceParser class >> definitionComment [
 "%glr;
-%prefix Le;
-%root ExternalFileReferenceParse;
+%prefix LeExternalFileReference;
+%root Parse;
 %suffix Node;
 
 %hierarchy Argument (
@@ -103,7 +103,7 @@ LeExternalFileReferenceParser class >> symbolNames [
 
 { #category : #generated }
 LeExternalFileReferenceParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #LeExternalFileReferenceAnnotationNode #LeExternalFileReferenceAnnotationNode #OrderedCollection #LeArgumentNode #LeFileNameArgumentNode #LeStartArgumentNode #LeEndArgumentNode #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #LeExternalFileReferenceExternalFileReferenceAnnotationNode #LeExternalFileReferenceExternalFileReferenceAnnotationNode #OrderedCollection #LeExternalFileReferenceArgumentNode #LeExternalFileReferenceFileNameArgumentNode #LeExternalFileReferenceStartArgumentNode #LeExternalFileReferenceEndArgumentNode #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }
@@ -134,7 +134,7 @@ LeExternalFileReferenceParser class >> transitionTable [
 { #category : #'generated-reduction actions' }
 LeExternalFileReferenceParser >> reduceActionForEnd1: nodes [
 	| result |
-	result := LeEndArgumentNode new.
+	result := LeExternalFileReferenceEndArgumentNode new.
 	result end: (nodes at: 1).
 	result equals: (nodes at: 2).
 	result value: (nodes at: 3).
@@ -144,7 +144,7 @@ LeExternalFileReferenceParser >> reduceActionForEnd1: nodes [
 { #category : #'generated-reduction actions' }
 LeExternalFileReferenceParser >> reduceActionForExternalFileReferenceAnnotation1: nodes [
 	| result |
-	result := LeExternalFileReferenceAnnotationNode new.
+	result := LeExternalFileReferenceExternalFileReferenceAnnotationNode new.
 	result addTokens: ((nodes at: 1) at: 1) to: result separators.
 	result addNodes: ((nodes at: 1) at: 2) to: result items.
 	^ result
@@ -172,7 +172,7 @@ LeExternalFileReferenceParser >> reduceActionForExternalFileReferenceAnnotationI
 { #category : #'generated-reduction actions' }
 LeExternalFileReferenceParser >> reduceActionForPath1: nodes [
 	| result |
-	result := LeFileNameArgumentNode new.
+	result := LeExternalFileReferenceFileNameArgumentNode new.
 	result value: (nodes at: 1).
 	^ result
 ]
@@ -180,7 +180,7 @@ LeExternalFileReferenceParser >> reduceActionForPath1: nodes [
 { #category : #'generated-reduction actions' }
 LeExternalFileReferenceParser >> reduceActionForPath2: nodes [
 	| result |
-	result := LeFileNameArgumentNode new.
+	result := LeExternalFileReferenceFileNameArgumentNode new.
 	result path: (nodes at: 1).
 	result equals: (nodes at: 2).
 	result value: (nodes at: 3).
@@ -190,7 +190,7 @@ LeExternalFileReferenceParser >> reduceActionForPath2: nodes [
 { #category : #'generated-reduction actions' }
 LeExternalFileReferenceParser >> reduceActionForStart1: nodes [
 	| result |
-	result := LeStartArgumentNode new.
+	result := LeExternalFileReferenceStartArgumentNode new.
 	result start: (nodes at: 1).
 	result equals: (nodes at: 2).
 	result value: (nodes at: 3).
