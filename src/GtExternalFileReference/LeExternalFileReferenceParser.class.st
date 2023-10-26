@@ -70,6 +70,24 @@ End
 	;"
 ]
 
+{ #category : #initialization }
+LeExternalFileReferenceParser class >> initialize [
+	super initialize.
+	(Smalltalk globals hasClassNamed: #LeParser)
+		ifTrue: [ LeParser annotationParsers
+				at: 'gtExternalFileReference'
+				put: [ :parser | 
+					parser
+						spawnParser: LeExternalFileReferenceParser
+						startingAt: LeExternalFileReferenceParser startingStateForExternalFileReferenceAnnotation ] ]
+]
+
+{ #category : #initialization }
+LeExternalFileReferenceParser class >> obsolete [
+	LeParser annotationParsers removeKey: 'gtExternalFileReference' ifAbsent: [  ].
+	^ super obsolete
+]
+
 { #category : #generated }
 LeExternalFileReferenceParser class >> reduceTable [
 ^#(

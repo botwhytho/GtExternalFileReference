@@ -12,6 +12,16 @@ LeExternalFileReferenceFileNameArgumentNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitFileNameArgument: self
 ]
 
+{ #category : #accessing }
+LeExternalFileReferenceFileNameArgumentNode >> imageObject [
+	self haltOnce.
+	^ self path value asFileReference
+		in: [ :aFileReference | 
+			aFileReference exists
+				ifTrue: [ aFileReference ]
+				ifFalse: [ '.' asFileReference ] ]
+]
+
 { #category : #generated }
 LeExternalFileReferenceFileNameArgumentNode >> path [
 	^ path
