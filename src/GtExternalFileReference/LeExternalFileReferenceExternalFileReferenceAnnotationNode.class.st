@@ -2,8 +2,8 @@ Class {
 	#name : #LeExternalFileReferenceExternalFileReferenceAnnotationNode,
 	#superclass : #LeExternalFileReferenceParseNode,
 	#instVars : [
-		'separators',
-		'items'
+		'items',
+		'separators'
 	],
 	#category : #GtExternalFileReference
 }
@@ -26,8 +26,8 @@ LeExternalFileReferenceExternalFileReferenceAnnotationNode >> compositeTokenVari
 { #category : #'generated-initialize-release' }
 LeExternalFileReferenceExternalFileReferenceAnnotationNode >> initialize [
 	super initialize.
-	separators := OrderedCollection new: 2.
 	items := OrderedCollection new: 2.
+	separators := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

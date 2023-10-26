@@ -17,12 +17,12 @@ LeExternalFileReferenceScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 LeExternalFileReferenceScanner >> emptySymbolTokenId [
-	^ 15
+	^ 16
 ]
 
 { #category : #generated }
 LeExternalFileReferenceScanner >> errorTokenId [
-	^ 16
+	^ 17
 ]
 
 { #category : #generated }
