@@ -72,7 +72,7 @@ LeColorAnnotationStyler >> styleExpandingObject: aColor [
 	| cacheKey attribute |
 	"aColor hasWordSpecified ifFalse: [ ^ self ]."
 	cacheKey := aColor source.
-	cacheKey traceCr.
+	"cacheKey traceCr."
 	attribute := GtCachedTextExpandButtonAttribute new
 			isExpanded: (self composite expanded at: cacheKey ifAbsentPut: [ true ]);
 			attributesCreatingBlock: [ GtResizablePreviewAttribute new
