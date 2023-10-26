@@ -45,25 +45,20 @@ LeExternalFileReferenceStylerVisitor >> styleAutoHidingAnnotation: anExternalFil
 
 { #category : #generated }
 LeExternalFileReferenceStylerVisitor >> styleButton: anExternalFileReferenceAnnotation [
-	| aLinkColor attribute |
-	"anExternalFileReferenceAnnotation source asFileReference ""imageObject"" exists ifFalse: [ ^ self ]."
-	aLinkColor := anExternalFileReferenceAnnotation source asFileReference exists
-		ifTrue: [ BrGlamorousColors textMarkupColor ]
-		ifFalse: [ BrGlamorousColors linkWithErrorColor ].
+	| attribute |
 	attribute := GtButtonAttribute new
 			beAppend;
 			stencil: [ | button label |
 				label := anExternalFileReferenceAnnotation source asFileReference "imageObject" pathString.
 				button := LeSnippetStylerVisitor
 						textLinkButtonPadding: (BlInsets top: 2)
-						margin: BlInsets empty.
+						margin: BlInsets empty
+						valid: anExternalFileReferenceAnnotation source asFileReference exists .
 				button aptitude glamorousCodeFont.
-				self flag: #BUG "Lable styling is not working.".
-				button label foreground: aLinkColor.
 				button
 					beSmallSize;
 					label: label;
-					action: [ :aButton | aButton phlow spawnObject: anExternalFileReferenceAnnotation source asFileReference "imageObject" ].
+					action: [ :aButton | aButton phlow spawnObject: anExternalFileReferenceAnnotation "imageObject" source asFileReference ].
 				button ].
 	self text
 		attribute: attribute
