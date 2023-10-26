@@ -31,8 +31,11 @@ LeExternalFileReferenceStylerVisitor >> styleAnnotation: anExternalFileReference
 
 { #category : #generated }
 LeExternalFileReferenceStylerVisitor >> styleButton: anExternalFileReferenceAnnotation [
-	| attribute |
-	anExternalFileReferenceAnnotation source asFileReference "imageObject" exists ifFalse: [ ^ self ].
+	| aLinkColor attribute |
+	"anExternalFileReferenceAnnotation source asFileReference ""imageObject"" exists ifFalse: [ ^ self ]."
+	aLinkColor := anExternalFileReferenceAnnotation source asFileReference exists
+		ifTrue: [ BrGlamorousColors textMarkupColor ]
+		ifFalse: [ BrGlamorousColors linkWithErrorColor ].
 	attribute := GtButtonAttribute new
 			beAppend;
 			stencil: [ | button label |
@@ -41,6 +44,8 @@ LeExternalFileReferenceStylerVisitor >> styleButton: anExternalFileReferenceAnno
 						textLinkButtonPadding: (BlInsets top: 2)
 						margin: BlInsets empty.
 				button aptitude glamorousCodeFont.
+				self flag: #BUG "Lable styling is not working.".
+				button label foreground: aLinkColor.
 				button
 					beSmallSize;
 					label: label;
@@ -57,17 +62,18 @@ LeExternalFileReferenceStylerVisitor >> styleExpandingObject: anExternalFileRefe
 	| attribute cacheKey fileReference |
 	cacheKey := anExternalFileReferenceAnnotation source.
 	fileReference := cacheKey asFileReference
-			ifFile: [ :aFile | aFile parent ]
-			ifDirectory: [ :aDirectory | aDirectory ]
+			ifFile: [ :aFile | cacheKey asFileReference parent ]
+			ifDirectory: [ :aDirectory | cacheKey asFileReference ]
 			ifAbsent: [ '.' asFileReference ].
+	self flag: #BUG "expanded element only happening when file does NOT exist.".
 	attribute := GtCachedTextExpandButtonAttribute new
-			isExpanded: (self expanded at: cacheKey ifAbsentPut: [ true ]);
+			isExpanded: true"(self expanded at: cacheKey ifAbsentPut: [ true ])";
 			attributesCreatingBlock: [ GtResizablePreviewAttribute new
 					withCache: self elements key: cacheKey;
 					result: fileReference;
 					showSelector: #gtTreeFor:;
-					height: 150	"anExternalFileReferenceAnnotation height" ];
-			onCachingDo: [ :aBoolean :theAttribute | self expanded at: cacheKey put: aBoolean ].
+					height: 150	"anExternalFileReferenceAnnotation height" ]";
+			onCachingDo: [ :aBoolean :theAttribute | self expanded at: cacheKey put: aBoolean ]".
 	self text
 		attribute: attribute
 		from: anExternalFileReferenceAnnotation parent startPosition
