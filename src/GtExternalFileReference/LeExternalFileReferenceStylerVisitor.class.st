@@ -29,6 +29,20 @@ LeExternalFileReferenceStylerVisitor >> styleAnnotation: anExternalFileReference
 	(self text from: anExternalFileReferenceAnnotation parent startPosition to: anExternalFileReferenceAnnotation parent stopPosition) foreground: aLinkColor
 ]
 
+{ #category : #visiting }
+LeExternalFileReferenceStylerVisitor >> styleAutoHidingAnnotation: anExternalFileReferenceAnnotation [
+	| first last range |
+	"aColor hasWordSpecified ifFalse: [ ^ self ]."
+	first := anExternalFileReferenceAnnotation parent startPosition max: 1.
+	last := anExternalFileReferenceAnnotation parent stopPosition
+			min: self composite text size.
+	range := first to: last.
+	composite
+		styleAutoHiding: range
+		and: range
+		whenOutside: anExternalFileReferenceAnnotation parent sourceInterval
+]
+
 { #category : #generated }
 LeExternalFileReferenceStylerVisitor >> styleButton: anExternalFileReferenceAnnotation [
 	| aLinkColor attribute |
