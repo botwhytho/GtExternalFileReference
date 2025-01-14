@@ -46,6 +46,7 @@ LeExternalFileReferenceStylerVisitor >> styleAutoHidingAnnotation: anExternalFil
 { #category : #generated }
 LeExternalFileReferenceStylerVisitor >> styleButton: anExternalFileReferenceAnnotation [
 	| attribute |
+	self flag: #TODO. "When I get back to working on this, try to leverage AbstractFileReference>>#asGtFileReferenceWithRanges and the underlying class that highlights part of a file"
 	attribute := GtButtonAttribute new
 			beAppend;
 			stencil: [ | button label |
